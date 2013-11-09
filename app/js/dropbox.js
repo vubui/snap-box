@@ -10,13 +10,30 @@ $(function () {
 
 	$('#uploadDropbox').click(function (e) {
 		e.preventDefault();
+		var user_email;
+		var current_file;
+		var deletion_date = Date.parse($("#datepicker").val()+" "+$("#timepicker").val());
+		client.getAccountInfo(function (error, info) {
+		    user_email = info.email;
+		});
 		// This will redirect the browser to OAuth login.
 		for (var i = 0; i < realFiles.length; i++) {
-			client.writeFile(realFiles[i].name, realFiles[i], {"noOverwrite" : false}, function(error, stat) {
+			current_file = realFiles[i];
+			client.writeFile(current_file.name, current_file, {"noOverwrite" : false}, function(error, stat) {
 				if (error) {
 					console.log("Fail");
 				}
 				console.log("Success");
+				var json = '{'
+			       +'"user" : "'+user_email+'",'
+			       +'"token"  : "'+client.credentials().token+'",'
+			       +'"file_name" : "'+current_file.name+'",'
+			       +'"deletion_date" : "'+deletion_date+'"'
+			       +'}';
+				var xhr = new XMLHttpRequest();
+				xhr.open("POST", "https://api.mongolab.com/api/1/databases/snapbox/collections/dauxanh?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v", true);
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.send(json);
 			});
 		}
 	});
