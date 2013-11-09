@@ -8,8 +8,16 @@
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+    jQuery(function($){
+        $("#expire_date").datepicker({changeMonth: true});
+        $("#expire_time").timepicker();
+    });
+  </script>
   <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
   <script src="js/dropbox.js"></script>
+  <script src="js/jquery.timepicker.js"></script>
 
 </head>
 <body>
@@ -17,6 +25,9 @@
   <div id="draganddrop">Drag & Drop Files Here</div>
 <br><br>
 <div id="status1"></div>
+<input type="text" id="expire_date" name="birthday" />
+<input type="text" id="expire_time" name="birthday" />
+<br><br>
 <button type="button" class="btn btn-primary btn-lg" id="uploadDropbox">Upload</button>
 
   <!-- In production use:
