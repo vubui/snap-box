@@ -30,7 +30,7 @@ $(function () {
 			       +'"token"  : "'+client.credentials().token+'",'
 			       +'"file_name" : "/'+current_file.name+'",'
 			       +'"deletion_date" : "'+deletion_date+'",'
-			       +'"tag" : "0"'
+			       +'"tag" : "100"'
 			       +'}';
 			    var url = "https://api.mongolab.com/api/1/databases/snapbox/collections/dauxanh?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v";
 			    /*$.post(url, new jQuery.parseJSON(json), function(data){}, "json" )

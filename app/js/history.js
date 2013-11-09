@@ -7,10 +7,11 @@ function createStatusbar(obj)
      this.statusbar = $("<div class='statusbar "+row+"'></div>");
      this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
      this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
+     this.status = $("<div class='filesize'></div>").appendTo(this.statusbar);
   
      obj.after(this.statusbar);
  
-    this.setFileNameSize = function(name,size)
+    this.setFileNameSize = function(name,size, status)
     {
 /*        var sizeStr="";
         var sizeKB = size/1024;
@@ -26,6 +27,7 @@ function createStatusbar(obj)
  */
         this.filename.html(name);
         this.size.html(size);
+        if (status==true) this.status.html("Deleted"); else this.status.html("Pending"); 
     }
 }
 
@@ -34,7 +36,7 @@ function updateHistory(files,obj)
    for (var i = 0; i < files.length; i++) 
    {
         var status = new createStatusbar(obj); //Using this we can set progress.
-        status.setFileNameSize(files[i].file_name,files[i].deletion_date.$date);
+        status.setFileNameSize(files[i].file_name,files[i].deletion_date.$date, files[i].deletion_status);
    }
 }
 
