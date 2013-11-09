@@ -13,6 +13,7 @@ $(function () {
 		var user_email;
 		var current_file;
 		var deletion_date = Date.parse($("#datepicker").val()+" "+$("#timepicker").val());
+		console.log(deletion_date);
 		client.getAccountInfo(function (error, info) {
 		    user_email = info.email;
 		});
@@ -37,6 +38,8 @@ $(function () {
 				xhr.send(json);
 			});
 		}
+
+		//window.location = "history.html";
 	});
 
 	// Try to finish OAuth authorization.
