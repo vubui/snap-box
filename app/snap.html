@@ -42,16 +42,24 @@
     </div>
     <hr>
 
-    <h2 style="display: none;">Your Added File</h2>
-
+    <h2 style="display: none;">Added File</h2>
     <div id="draganddrop">Drag And Drop a File Here</div>
-    
-    <p><div id="status1"></div></p>
 
-    <p>Date: <input type="text" id="datepicker" /></p>
-    <p>Time: <input id="timepicker" type="text" class="time ui-timepicker-input" autocomplete="off"></p>
+    <div class="uploadDiv" style="display: none;">
+      <p><div id="status1"></div></p>
+      <h2>Expiration Date</h2>
 
-    <button type="button" class="btn btn-primary btn-lg" id="uploadDropbox">Upload</button>
+      <div class="dateTimePicker">
+        <div>
+          <span>Date: <input type="text" id="datepicker" /></span>
+          <span style="margin-left: 20px;">Time: <input id="timepicker" type="text" class="time ui-timepicker-input" autocomplete="off"></span>
+        </div>
+        <div class="uploadButton"> 
+          <button type="button" class="btn btn-primary btn-lg" id="uploadDropbox">Upload</button>
+        </div>
+      </div>
+    </div>
+
   </div>
 
   <!-- In production use:

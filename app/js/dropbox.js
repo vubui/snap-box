@@ -56,6 +56,7 @@ $(function () {
         // hide drag and drop windows
         obj.slideUp();
         $('h2').show();
+        $('.uploadDiv').show();
 
 		//We need to send dropped files to Server
 		handleFileUpload(files,obj);

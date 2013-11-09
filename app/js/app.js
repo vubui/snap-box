@@ -30,7 +30,6 @@ function positionBtn() {
 
 
 $( window ).ready(function() {
-	positionBtn();/*
-	$('#basic_example_1').datetimepicker(); */	
+	positionBtn();
 });
 $( window ).resize(positionBtn);
