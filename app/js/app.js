@@ -15,4 +15,18 @@ config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/view1'});
 }]);
 
-// js
+// js hack to position the connect btn on the main page
+function positionBtn() {
+	var pageHeight = $('.log-in').height();
+	var pageWidth = $('.log-in').width();
+	
+	var $btn = $('#loginDropbox');
+	var buttonHeight = $btn.height();
+	var buttonWidth = $btn.width();
+
+	$btn.css('margin-top', (pageHeight - buttonHeight)/2);
+	$btn.css('margin-left', (pageWidth - buttonWidth)/2);
+}
+
+$( window ).ready(positionBtn)
+$( window ).resize(positionBtn)
