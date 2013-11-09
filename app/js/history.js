@@ -7,13 +7,12 @@ function createStatusbar(obj)
      this.statusbar = $("<div class='statusbar "+row+"'></div>");
      this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
      this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
-     /*this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
-    */  
+  
      obj.after(this.statusbar);
  
     this.setFileNameSize = function(name,size)
     {
-        var sizeStr="";
+/*        var sizeStr="";
         var sizeKB = size/1024;
         if(parseInt(sizeKB) > 1024)
         {
@@ -24,8 +23,36 @@ function createStatusbar(obj)
         {
             sizeStr = sizeKB.toFixed(2)+" KB";
         }
- 
+ */
         this.filename.html(name);
-        this.size.html(sizeStr);
+        this.size.html(size);
     }
 }
+
+function updateHistory(files,obj)
+{
+   for (var i = 0; i < files.length; i++) 
+   {
+        var status = new createStatusbar(obj); //Using this we can set progress.
+        status.setFileNameSize(files[i].file_name,files[i].deletion_date.$date);
+   }
+}
+
+files = {};
+
+// ajax
+$.ajax({
+  type: "GET",
+  dataType: "json",
+  url: "https://api.mongolab.com/api/1/databases/snapbox/collections/schedule?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v",
+  success: function(response) {
+    files = response;
+    console.log(response);
+  },
+  error: function(error) {
+    console.log(error);
+  }
+}).done(function() {
+  var obj = $(".history");
+  updateHistory(files, obj);
+});
