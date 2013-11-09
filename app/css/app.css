@@ -131,3 +131,7 @@ hr {
   cursor:pointer;
   vertical-align:top
 }
+
+#datepicker, #timepicker {
+  font-size: 14px;
+}
