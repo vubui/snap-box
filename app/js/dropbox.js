@@ -28,18 +28,41 @@ $(function () {
 				var json = '{'
 			       +'"user" : "'+user_email+'",'
 			       +'"token"  : "'+client.credentials().token+'",'
-			       +'"file_name" : "'+current_file.name+'",'
+			       +'"file_name" : "/'+current_file.name+'",'
 			       +'"deletion_date" : "'+deletion_date+'",'
 			       +'"tag" : "0"'
 			       +'}';
+			    var url = "https://api.mongolab.com/api/1/databases/snapbox/collections/dauxanh?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v";
+			    /*$.post(url, new jQuery.parseJSON(json), function(data){}, "json" )
+			    	.done(function() {
+			    		window.location = "history.html";
+			    	})
+			    	.fail(function() {
+			    		$("#error-message").show().delay(3000);
+			    		$(document).location = "snap.html";
+			    	});*/
+
+// 					$.ajax({
+// 						type: 'POST',
+// 						data: data,
+// 						dataType: "json",
+// 						url: url
+// 					}).done(function(){
+// 					window.location = "history.html";	
+// 					}).fail(function() {
+// $("#error-message").show().delay(3000);
+// 			    		$(document).location = "snap.html";
+// 					});
+
 				var xhr = new XMLHttpRequest();
 				xhr.open("POST", "https://api.mongolab.com/api/1/databases/snapbox/collections/dauxanh?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v", true);
 				xhr.setRequestHeader("Content-Type", "application/json");
 				xhr.send(json);
+				// $("#error-message").show().delay(3000);
 			});
 		}
 
-		//window.location = "history.html";
+		// window.location = "history.html";
 	});
 
 	// Try to finish OAuth authorization.
