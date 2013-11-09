@@ -23,9 +23,6 @@ function positionBtn() {
 	var $btn = $('#loginDropbox');
 	var buttonHeight = $btn.height();
 	var buttonWidth = $btn.width();
-
-	$btn.css('margin-top', (pageHeight - buttonHeight)/2);
-	$btn.css('margin-left', (pageWidth - buttonWidth)/2);
 }
 
 

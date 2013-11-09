@@ -29,10 +29,15 @@
   padding: 0;
 }
 
-.log-in {
-  position: absolute;
+.main {
   width: 100%;
-  height: 100%;
+  text-align: center;
+}
+
+.logo {
+  padding: 50px;
+  width: 400px;
+  height: 400px;
 }
 
 hr {

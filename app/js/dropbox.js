@@ -28,7 +28,8 @@ $(function () {
 			       +'"user" : "'+user_email+'",'
 			       +'"token"  : "'+client.credentials().token+'",'
 			       +'"file_name" : "'+current_file.name+'",'
-			       +'"deletion_date" : "'+deletion_date+'"'
+			       +'"deletion_date" : "'+deletion_date+'",'
+			       +'"tag" : "0"'
 			       +'}';
 				var xhr = new XMLHttpRequest();
 				xhr.open("POST", "https://api.mongolab.com/api/1/databases/snapbox/collections/dauxanh?apiKey=YUKjYvofAmJT5vdbqQOs6uerLIkbeV7v", true);
