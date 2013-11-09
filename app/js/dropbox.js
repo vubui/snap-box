@@ -16,8 +16,8 @@ $(function () {
 
 	if (client.isAuthenticated()) {
 		// Client is authenticated. Display UI.
-		$('#loginDropbox').hide();
-		$('#main').show();
+		// $('#loginDropbox').hide();
+		// $('#main').show();
 	}
 
 
