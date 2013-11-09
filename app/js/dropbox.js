@@ -1,10 +1,24 @@
 var client = new Dropbox.Client({key: "gzh9gtknnfo104t"});
+var realFiles;
 
 $(function () {
 	$('#loginDropbox').click(function (e) {
 		e.preventDefault();
 		// This will redirect the browser to OAuth login.
 		client.authenticate();
+	});
+
+	$('#uploadDropbox').click(function (e) {
+		e.preventDefault();
+		// This will redirect the browser to OAuth login.
+		for (var i = 0; i < realFiles.length; i++) {
+			client.writeFile(realFiles[i].name, realFiles[i], {"noOverwrite" : false}, function(error, stat) {
+				if (error) {
+					console.log("Fail");
+				}
+				console.log("Success");
+			});
+		}
 	});
 
 	// Try to finish OAuth authorization.
@@ -20,6 +34,45 @@ $(function () {
 		// $('#main').show();
 	}
 
+	var obj = $("#draganddrop");
+	obj.on('dragenter', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	    $(this).css('border', '4px dashed #3482E1');
+	});
+	obj.on('dragover', function (e) 
+	{
+	     e.stopPropagation();
+	     e.preventDefault();
+	});
+	obj.on('drop', function (e) 
+	{
+		$(this).css('border', '4px dashed rgba(0, 0, 0, 0.2)');
+		e.preventDefault();
+		var files = e.originalEvent.dataTransfer.files;
+		realFiles = files;
+		console.log(realFiles);
+
+		//We need to send dropped files to Server
+		handleFileUpload(files,obj);
+	});
+	$(document).on('dragenter', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	});
+	$(document).on('dragover', function (e) 
+	{
+	  e.stopPropagation();
+	  e.preventDefault();
+	  obj.css('border', '4px dashed rgba(0, 0, 0, 0.2)');
+	});
+	$(document).on('drop', function (e) 
+	{
+	    e.stopPropagation();
+	    e.preventDefault();
+	});
 
 });
 
@@ -123,45 +176,3 @@ function handleFileUpload(files,obj)
  
    }
 }
-$(document).ready(function()
-{
-var obj = $("#draganddrop");
-obj.on('dragenter', function (e) 
-{
-    e.stopPropagation();
-    e.preventDefault();
-    $(this).css('border', '4px dashed #3482E1');
-});
-obj.on('dragover', function (e) 
-{
-     e.stopPropagation();
-     e.preventDefault();
-});
-obj.on('drop', function (e) 
-{
- 
-     $(this).css('border', '4px dashed rgba(0, 0, 0, 0.2)');
-     e.preventDefault();
-     var files = e.originalEvent.dataTransfer.files;
- 
-     //We need to send dropped files to Server
-     handleFileUpload(files,obj);
-});
-$(document).on('dragenter', function (e) 
-{
-    e.stopPropagation();
-    e.preventDefault();
-});
-$(document).on('dragover', function (e) 
-{
-  e.stopPropagation();
-  e.preventDefault();
-  obj.css('border', '4px dashed rgba(0, 0, 0, 0.2)');
-});
-$(document).on('drop', function (e) 
-{
-    e.stopPropagation();
-    e.preventDefault();
-});
- 
-});
