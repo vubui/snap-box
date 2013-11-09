@@ -2,18 +2,40 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <title>SnapBox App</title>
 
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+  <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+
+  <script type="text/javascript" src="js/base.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+  <link rel="stylesheet" href="css/app.css"/>
+  
   <!-- Bootstrap -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
   <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
   <script src="js/dropbox.js"></script>
 
 </head>
 <body>
-<div id="histories"></div>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="/app/history.html">History</a></li>
+      </ul>
+      <a class="brand" href="/app/index.html"><h3 class="text-muted">SnapBox</h3></a>
+    </div>
+    <hr>
+
+    <h2 >File History</h2>
+    <div> </div>
+
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
