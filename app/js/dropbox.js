@@ -5,7 +5,7 @@ $(function () {
 	$('#loginDropbox').click(function (e) {
 		e.preventDefault();
 		// This will redirect the browser to OAuth login.
-		client.authenticate();
+		client.authenticate({"redirect_uri" : "snap.html"});
 	});
 
 	$('#uploadDropbox').click(function (e) {
@@ -45,10 +45,8 @@ $(function () {
 		}
 	});
 
-	if (client.isAuthenticated()) {
-		// Client is authenticated. Display UI.
-		// $('#loginDropbox').hide();
-		// $('#main').show();
+	if (client.isAuthenticated()) { 
+		if (window.location.pathname=="/app/index.html") window.location = "snap.html";
 	}
 
 	var obj = $("#draganddrop");
