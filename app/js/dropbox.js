@@ -52,7 +52,10 @@ $(function () {
 		e.preventDefault();
 		var files = e.originalEvent.dataTransfer.files;
 		realFiles = files;
-		console.log(realFiles);
+
+        // hide drag and drop windows
+        obj.slideUp();
+        $('h2').show();
 
 		//We need to send dropped files to Server
 		handleFileUpload(files,obj);
@@ -124,7 +127,8 @@ function createStatusbar(obj)
      this.filename = $("<div class='filename'></div>").appendTo(this.statusbar);
      this.size = $("<div class='filesize'></div>").appendTo(this.statusbar);
      this.progressBar = $("<div class='progressBar'><div></div></div>").appendTo(this.statusbar);
-     this.abort = $("<div class='abort'>Abort</div>").appendTo(this.statusbar);
+     
+     
      obj.after(this.statusbar);
  
     this.setFileNameSize = function(name,size)
@@ -172,7 +176,5 @@ function handleFileUpload(files,obj)
  
         var status = new createStatusbar(obj); //Using this we can set progress.
         status.setFileNameSize(files[i].name,files[i].size);
-        //sendFileToServer(fd,status);
- 
    }
 }

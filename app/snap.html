@@ -2,33 +2,57 @@
 <html lang="en" ng-app="myApp">
 <head>
   <meta charset="utf-8">
-  <title>My AngularJS App</title>
-  <link rel="stylesheet" href="css/app.css"/>
+  <title>SnapBox App</title>
 
-  <!-- Bootstrap -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-  <script type="text/javascript">
-    jQuery(function($){
-        $("#expire_date").datepicker({changeMonth: true});
-        $("#expire_time").timepicker();
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  
+  <script type="text/javascript" src="js/jquery.timepicker.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/jquery.timepicker.css" />
+
+  <script type="text/javascript" src="js/base.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/base.css" />
+
+  <script>
+    jQuery(function($) {
+      $("#datepicker").datepicker();
+      $("#basicExample").timepicker();
     });
   </script>
+
+  <link rel="stylesheet" href="css/app.css"/>
+  
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
   <script src="https://www.dropbox.com/static/api/dropbox-datastores-1.0-latest.js"></script>
   <script src="js/dropbox.js"></script>
-  <script src="js/jquery.timepicker.js"></script>
 
 </head>
 <body>
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <h3 class="text-muted">SnapBox</h3>
+    </div>
+    <hr>
 
-  <div id="draganddrop">Drag & Drop Files Here</div>
-<br><br>
-<div id="status1"></div>
-<input type="text" id="expire_date" name="birthday" />
-<input type="text" id="expire_time" name="birthday" />
-<br><br>
-<button type="button" class="btn btn-primary btn-lg" id="uploadDropbox">Upload</button>
+    <h2 style="display: none;">Your Added File</h2>
+
+    <div id="draganddrop">Drag And Drop a File Here</div>
+    
+    <p><div id="status1"></div></p>
+
+    <p>Date: <input type="text" id="datepicker" /></p>
+    <p>Time: <input id="basicExample" type="text" class="time ui-timepicker-input" autocomplete="off"></p>
+
+    <button type="button" class="btn btn-primary btn-lg" id="uploadDropbox">Upload</button>
+  </div>
 
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>

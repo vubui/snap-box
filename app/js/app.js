@@ -28,5 +28,9 @@ function positionBtn() {
 	$btn.css('margin-left', (pageWidth - buttonWidth)/2);
 }
 
-$( window ).ready(positionBtn)
-$( window ).resize(positionBtn)
+
+$( window ).ready(function() {
+	positionBtn();/*
+	$('#basic_example_1').datetimepicker(); */	
+});
+$( window ).resize(positionBtn);
